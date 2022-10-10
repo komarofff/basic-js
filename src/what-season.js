@@ -22,7 +22,6 @@ function getSeason(date) {
 
         try {
             const seasons = ['winter', 'winter', 'spring', 'spring', 'spring', 'summer', 'summer', 'summer', 'autumn', 'autumn', 'autumn', 'winter']
-            //const monthNumber = date.getMonth()
             const monthNumber = date.getMonth()
             return seasons[monthNumber]
 
