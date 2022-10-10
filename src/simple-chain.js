@@ -14,7 +14,6 @@ const chainMaker = {
             let val = String(value)
             this.chain.push(`( ${val} )`)
         }
-
         return this
     },
     removeLink(position) {
