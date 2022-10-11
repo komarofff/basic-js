@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const {NotImplementedError} = require('../extensions/index.js');
 
 /**
  * Given a string, return its encoding version.
@@ -11,21 +11,27 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function encodeLine(str) {
-  console.log(str)
-   let result = []
-  result = str.split('').filter((el) =>{
-    let  count = 0
-    for(let val of str){
-      if( el.toLowerCase() === val.toLowerCase())count++
+    console.log(str)
+    let arr = str.split('')
+    let resultArr = []
+    let result = []
+    let counter = 1
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === arr[i + 1]) {
+            counter++
+        } else {
+            if (counter === 1) counter = ''
+            resultArr.push({letter: arr[i], count: counter})
+            counter = 1
+        }
     }
-    if(count>1) console.log(count)
+    resultArr.forEach(el => result.push(el.count + el.letter))
+    return result.join('')
 
-  })
-  console.log( result)
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+    // throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
 }
 
 module.exports = {
-  encodeLine
+    encodeLine
 };

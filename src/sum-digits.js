@@ -16,9 +16,8 @@ const {NotImplementedError} = require('../extensions/index.js');
 function getSumOfDigits(n) {
     while (n > 9) {
         n = n.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b))
-
     }
-    return parseFloat(n)
+    return Number(n)
 
     //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here

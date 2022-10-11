@@ -10,21 +10,20 @@ const chainMaker = {
         return this.chain.length
     },
     addLink(value) {
-        if(value !== undefined) {
+        if (value !== undefined) {
             let val = String(value)
             this.chain.push(`( ${val} )`)
         }
         return this
     },
     removeLink(position) {
-        try{
-            if ( isNaN(position) || position < 1  || position > this.chain.length ) {
+        try {
+            if (isNaN(position) || position < 1 || position > this.chain.length) {
                 throw new Error("You can't remove incorrect link!")
             }
             this.chain.splice(position - 1, 1)
             return this
-        }
-        catch{
+        } catch {
             this.chain = []
             throw new Error("You can't remove incorrect link!")
         }
