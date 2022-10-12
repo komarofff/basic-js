@@ -29,7 +29,7 @@ function repeater(str, options) {
         if(options.addition === undefined) additionText = ''
         let additionRepeatTimes = options.additionRepeatTimes || 1
         let additionSeparator = options.additionSeparator
-        if(options.additionSeparator === undefined) additionSeparator = ''
+        if(options.additionSeparator === undefined) additionSeparator = '|'
         let secondStr = []
         for (let i = 0; i < repeatTimes; i++) {
             firstStr.push(`${data}`)
@@ -48,7 +48,10 @@ function repeater(str, options) {
             }
             secondStr = []
         }
+        console.log( 'result',firstStr)
 let result = firstStr.join('').replace(/[,]/g, '')
+//let result = firstStr.join('').replace(',|,','|')
+
         console.log( 'result',result)
         return result
     }
