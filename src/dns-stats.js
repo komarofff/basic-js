@@ -23,6 +23,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getDNSStats( domains) {
+  let data = []
+  for(let i=0; i< domains.length;i++){
+    let res = domains[i].split('.').reverse()
+    data.push(res)
+  }
+  console.log('domains',domains)
+  console.log('data',data)
   // filename=domains[i].split('.').slice(0, -1).join('.')
   //
   // extension=domains[i].split('.').reverse()[0]

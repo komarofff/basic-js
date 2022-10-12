@@ -24,7 +24,6 @@ function repeater(str, options) {
         let firstSeparator = options.separator
         if (options.separator === undefined) firstSeparator = '+'
         const firstStr = []
-
         let additionText = String(options.addition)
         if (options.addition === undefined) additionText = ''
         let additionRepeatTimes = options.additionRepeatTimes || 1
