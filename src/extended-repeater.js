@@ -16,47 +16,45 @@ const {NotImplementedError} = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
-    console.log('str', str)
-    console.log('options', options)
-    if(options) {
+    // console.log('str', str)
+    // console.log('options', options)
+    if (options) {
         let data = String(str)
         let repeatTimes = options.repeatTimes || 1
         let firstSeparator = options.separator
-        if(options.separator === undefined) firstSeparator = '+'
+        if (options.separator === undefined) firstSeparator = '+'
         const firstStr = []
 
         let additionText = String(options.addition)
-        if(options.addition === undefined) additionText = ''
+        if (options.addition === undefined) additionText = ''
         let additionRepeatTimes = options.additionRepeatTimes || 1
         let additionSeparator = options.additionSeparator
-        if(options.additionSeparator === undefined) additionSeparator = '|'
+        if (options.additionSeparator === undefined) additionSeparator = '|'
         let secondStr = []
         for (let i = 0; i < repeatTimes; i++) {
             firstStr.push(`${data}`)
 
             for (let q = 0; q < additionRepeatTimes; q++) {
-                   secondStr.push(`${additionText}`)
-                       if (q < additionRepeatTimes - 1) secondStr.push(`${additionSeparator}`)
-                  //secondStr.push(`${additionSeparator}`)
+                if (additionText) secondStr.push(`${additionText}`)
+                if (q < additionRepeatTimes - 1) secondStr.push(`${additionSeparator}`)
+
             }
 
             if (i < repeatTimes - 1) {
-                firstStr.push(`${secondStr}`)
+                let secondData = secondStr.join('')
+                firstStr.push(`${secondData}`)
                 firstStr.push(`${firstSeparator}`)
-            }else{
-                firstStr.push(`${secondStr}`)
+            } else {
+                let secondData2 = secondStr.join('')
+                firstStr.push(`${secondData2}`)
             }
             secondStr = []
         }
-        console.log( 'result',firstStr)
-let result = firstStr.join('').replace(/[,]/g, '')
-//let result = firstStr.join('').replace(',|,','|')
 
-        console.log( 'result',result)
-        return result
+        return firstStr.join('')
     }
 
-    throw new NotImplementedError('Not implemented');
+    //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
 }
 
