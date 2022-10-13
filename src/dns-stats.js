@@ -34,7 +34,7 @@ function getDNSStats( domains) {
   //
   // extension=domains[i].split('.').reverse()[0]
 
-  throw new NotImplementedError('Not implemented');
+  //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
 
