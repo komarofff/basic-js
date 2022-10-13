@@ -20,7 +20,7 @@ function isMAC48Address(n) {
         let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
         let data = n.split('-').join('').split('')
         let counter = 0
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < 13; i++) {
             if (arr.includes(data[i])) {
                 counter++
             }
