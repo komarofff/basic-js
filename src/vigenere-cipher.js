@@ -36,19 +36,17 @@ class VigenereCipheringMachine {
             for (let i = 0; i < this.symbolArray.length; i++) {
                 let symbol = this.startArray[q]
                 if (i === 0) {
-                    //symbol = this.startArray[q]
                     newArr.push(this.startArray[q])
                 } else {
                     symbol = this.symbolArray[i]
                 }
-
                 newArr.push(symbol)
             }
             let shift = this.symbolArray.shift()
             this.symbolArray.push(shift)
             this.matrix[q + 1] = newArr
         }
-
+        // show matrix
         // for (let i = 0; i < this.matrix.length; i++) {
         //     console.log(this.matrix[i].join(' '))
         // }
@@ -87,7 +85,7 @@ class VigenereCipheringMachine {
                 if (typeof el === "number") {
                     result.push(this.matrix[keyArr[counter]][el])
                     counter++
-                    if (counter >= keyLength) counter = 0
+                    if (counter === keyLength) counter = 0
                 } else {
                     result.push(el)
                 }
@@ -116,20 +114,16 @@ class VigenereCipheringMachine {
             for (let z = 0; z < key.length; z++) {
                 for (let q = 1; q < this.matrix.length; q++) {
                     if (key[z].toUpperCase() === this.matrix[0][q]) {
-                        //console.log(key[z],this.matrix[q][0],q)
                         keyArr.push(q)
                     }
                 }
             }
-            console.log('keyArr', keyArr.join(','))
+            //console.log('keyArr', keyArr.join(','))
 
             let keyLength = key.length
-            console.log(keyLength)
             let counter = 0
             let result = []
-
             str.forEach(el => {
-
                 for (let i = 1; i < this.matrix.length; i++) {
                     if(el.charCodeAt(0)<65 || el.charCodeAt(0)>90){
                         result.push(el)
