@@ -29,6 +29,7 @@ class VigenereCipheringMachine {
     }
 
     doMatrix() {
+        this.matrix = []
         this.matrix.push(this.rowArray)
         for (let q = 0; q < this.symbolArray.length; q++) {
             let newArr = []
@@ -106,8 +107,55 @@ class VigenereCipheringMachine {
     }
 
     decrypt() {
-        //console.log(arguments)
-        throw new NotImplementedError('Not implemented');
+        console.log('this.type',this.type)
+        if (!arguments[0] || !arguments[1]) {
+            throw new Error('No arguments')
+        } else {
+            this.doMatrix()
+            let str = arguments[0].split('')
+            let key = arguments[1].split('')
+            console.log('arguments', arguments)
+            console.log('str', str)
+            console.log('key', key)
+
+            let keyArr = []
+            for (let z = 0; z < key.length; z++) {
+                for (let q = 1; q < this.matrix.length; q++) {
+                    if (key[z].toUpperCase() === this.matrix[0][q]) {
+                        //console.log(key[z],this.matrix[q][0],q)
+                        keyArr.push(q)
+                    }
+                }
+            }
+            console.log('keyArr', keyArr.join(','))
+
+            let keyLength = key.length
+            console.log(keyLength)
+            let counter = 0
+            let result = []
+
+            str.forEach(el => {
+
+                for (let i = 1; i < this.matrix.length; i++) {
+                    if(el.charCodeAt(0)<65 || el.charCodeAt(0)>90){
+                        result.push(el)
+                        break
+                    }
+                    if ( this.matrix[i][keyArr[counter]] === el.toUpperCase()) {
+                       // console.log(el.toUpperCase(), this.matrix[i][keyArr[counter]], this.matrix[i][0], 'key', counter)
+                        result.push(this.matrix[i][0])
+                        counter++
+                        if (counter === keyLength) counter = 0
+                        break
+                    }
+
+                }
+            })
+            //LEARN FRONTEND DEVELOPMENT :)
+            return result.join('')
+        }
+
+        //throw new NotImplementedError('Not implemented');
         // remove line with error and write your code here
     }
 }
